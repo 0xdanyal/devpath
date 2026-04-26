@@ -21,6 +21,7 @@ Built for self-taught developers who are tired of not knowing what to learn next
 - **Frontend** — Next.js 14, Tailwind CSS
 - **Backend** — Node.js, Express, MongoDB, Mongoose
 - **AI** — Groq API (Llama 3.3 70B)
+- **YT_DATA** — YouTube Data API v3
 - **Auth** — JWT
 
 ## Getting Started
@@ -37,6 +38,7 @@ Create a `.env.local` file:
 MONGODB_URI=your_mongodb_uri
 JWT_SECRET=your_jwt_secret
 GROQ_API_KEY=your_groq_api_key
+YOUTUBE_API_KEY=your_youtube_api_key
 ```
 
 ```bash
@@ -54,14 +56,14 @@ Built by [Danyal](https://linkedin.com/in/danyal-dev) — a self-taught develope
 ### Landing Page
 ![Landing Page](public/LandinPage.png)
 
-### Dashboard
-![Dashboard](public/Dashboard.png)
+### Register Page
+![Register Page](public/RegisterPage.png)
 
 ### Login Page
 ![Login Page](public/LoginPage.png)
 
-### Register Page
-![Register Page](public/RegisterPage.png)
+### Dashboard
+![Dashboard](public/Dashboard.png)
 
 ### Roadmap Page
 ![Roadmap Page](public/RoadmapPage.png)
