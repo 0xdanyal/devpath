@@ -67,3 +67,6 @@ Built by [Danyal](https://linkedin.com/in/danyal-dev) — a self-taught develope
 
 ### Roadmap Page
 ![Roadmap Page](public/RoadmapPage.png)
+
+### Postman Testing APIs
+![Roadmap Page](public/Postman_Testing.png)
