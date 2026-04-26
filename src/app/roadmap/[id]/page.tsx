@@ -76,7 +76,7 @@ export default function RoadmapPage() {
 
   if (loading) return (
     <main className="min-h-screen bg-black text-white flex items-center justify-center">
-      <p className="text-white/50">Loading roadmap...</p>
+      <p className="text-white/60">Loading roadmap...</p>
     </main>
   )
 
@@ -87,34 +87,35 @@ export default function RoadmapPage() {
 
   return (
     <main className="min-h-screen bg-black text-white">
-      <nav className="border-b border-white/10 px-6 py-4 flex items-center justify-between">
+      <nav className="border-b border-white/10 bg-black/60 backdrop-blur px-6 py-4 flex items-center justify-between">
         <button onClick={() => router.push('/dashboard')}
-          className="text-white/50 hover:text-white transition text-sm">
+          className="text-white/60 hover:text-white transition text-sm">
           ← Dashboard
         </button>
-        <span className="text-sm text-white/50">{completed}/{roadmap.skills.length} completed</span>
+        <span className="text-sm text-white/60">{completed}/{roadmap.skills.length} completed</span>
       </nav>
 
-      <div className="max-w-3xl mx-auto px-6 py-10 space-y-8">
+      <div className="max-w-4xl mx-auto px-6 py-10 md:px-8 md:py-12 space-y-8 md:space-y-10">
         <div className="space-y-3">
-          <h1 className="text-3xl font-bold">{roadmap.jobTitle}</h1>
+          <h1 className="text-3xl md:text-4xl font-semibold tracking-tight">{roadmap.jobTitle}</h1>
+          <p className="text-white/60 leading-relaxed">{roadmap.jobDescription}</p>
           <div className="flex items-center gap-3">
-            <div className="flex-1 bg-white/10 rounded-full h-2">
+            <div className="flex-1 bg-white/10 rounded-full h-2.5">
               <div
-                className="bg-blue-500 h-2 rounded-full transition-all duration-500"
+                className="bg-blue-500 h-2.5 rounded-full transition-all duration-500"
                 style={{ width: `${progress}%` }}
               />
             </div>
-            <span className="text-sm text-white/50 w-10">{progress}%</span>
+            <span className="text-sm text-white/60 w-10">{progress}%</span>
           </div>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-4 md:space-y-5">
           {roadmap.skills.map((skill, index) => (
             <div key={index}
-              className={`border rounded-xl p-5 space-y-4 transition-all ${skill.completed
-                ? 'border-blue-500/30 bg-blue-500/5'
-                : 'border-white/10 hover:border-white/20'}`}>
+              className={`border rounded-2xl p-5 md:p-6 space-y-4 transition-all duration-200 shadow-[0_8px_30px_rgb(0,0,0,0.25)] ${skill.completed
+                ? 'border-blue-400/30 bg-blue-500/[0.07]'
+                : 'border-white/10 bg-white/[0.02] hover:border-white/20 hover:bg-white/[0.05]'}`}>
               <div className="flex items-center gap-3">
                 <button
                   onClick={() => toggleSkill(index, !skill.completed)}
@@ -125,16 +126,16 @@ export default function RoadmapPage() {
                 </button>
                 <div>
                   <span className="text-xs text-white/30 mr-2">#{skill.order}</span>
-                  <span className={`font-semibold ${skill.completed ? 'line-through text-white/40' : ''}`}>
+                  <span className={`text-base font-semibold tracking-tight ${skill.completed ? 'line-through text-white/40' : ''}`}>
                     {skill.name}
                   </span>
                 </div>
               </div>
 
-              <div className="grid gap-2 ml-9">
+              <div className="grid gap-2.5 ml-9">
                 {skill.resources.map((res, ri) => (
                   <a key={ri} href={res.url} target="_blank" rel="noopener noreferrer"
-                    className={`flex items-center gap-2 border rounded-lg px-3 py-2 text-sm hover:opacity-80 transition ${typeColors[res.type]}`}>
+                    className={`flex items-center gap-2 border rounded-xl min-h-[44px] px-3.5 py-2.5 text-sm hover:opacity-90 transition ${typeColors[res.type]}`}>
                     <span>{typeIcons[res.type]}</span>
                     <span className="flex-1 truncate">{res.title}</span>
                     <span className="text-xs opacity-60 uppercase">{res.type}</span>
@@ -146,10 +147,10 @@ export default function RoadmapPage() {
         </div>
 
         {progress === 100 && (
-          <div className="border border-green-500/30 bg-green-500/5 rounded-xl p-6 text-center space-y-2">
+          <div className="border border-green-400/30 bg-green-500/[0.08] rounded-2xl p-6 md:p-7 text-center space-y-2 shadow-[0_8px_30px_rgb(0,0,0,0.25)]">
             <p className="text-2xl">🎉</p>
             <p className="font-semibold text-green-400">Roadmap Complete!</p>
-            <p className="text-white/50 text-sm">You're ready to apply for this role.</p>
+            <p className="text-white/60 text-sm">You're ready to apply for this role.</p>
           </div>
         )}
       </div>

@@ -24,19 +24,19 @@ export default function Generate() {
   }
 
   return (
-    <main className="min-h-screen bg-black text-white flex items-center justify-center px-4">
-      <div className="w-full max-w-2xl space-y-8">
+    <main className="min-h-screen bg-black text-white flex items-center justify-center px-4 py-10">
+      <div className="w-full max-w-3xl space-y-8">
         <div>
-          <h2 className="text-3xl font-bold">Generate Roadmap</h2>
-          <p className="text-white/50 mt-2">Paste a job description and get your personalized learning path</p>
+          <h2 className="text-3xl md:text-4xl font-semibold tracking-tight">Generate Roadmap</h2>
+          <p className="text-white/60 mt-2">Paste a job description and get your personalized learning path</p>
         </div>
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4 rounded-2xl border border-white/10 bg-white/[0.03] p-6 md:p-8 shadow-[0_8px_30px_rgb(0,0,0,0.25)]">
           <input
             type="text"
             placeholder="Job Title (e.g. MERN Stack Developer)"
             value={form.jobTitle}
             onChange={e => setForm({ ...form, jobTitle: e.target.value })}
-            className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 outline-none focus:border-blue-500 transition"
+            className="w-full bg-white/[0.02] border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-blue-400/70 focus:ring-2 focus:ring-blue-500/20 transition"
             required
           />
           <textarea
@@ -44,13 +44,13 @@ export default function Generate() {
             value={form.jobDescription}
             onChange={e => setForm({ ...form, jobDescription: e.target.value })}
             rows={10}
-            className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 outline-none focus:border-blue-500 transition resize-none"
+            className="w-full bg-white/[0.02] border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-blue-400/70 focus:ring-2 focus:ring-blue-500/20 transition resize-none"
             required
           />
           {error && <p className="text-red-400 text-sm">{error}</p>}
           <button
             type="submit" disabled={loading}
-            className="w-full bg-blue-600 hover:bg-blue-700 py-3 rounded-lg font-medium transition disabled:opacity-50">
+            className="w-full bg-blue-600 hover:bg-blue-500 active:scale-[0.99] py-3 rounded-xl font-medium transition disabled:opacity-50">
             {loading ? 'Generating your roadmap...' : 'Generate Roadmap →'}
           </button>
         </form>

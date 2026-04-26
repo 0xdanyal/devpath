@@ -48,8 +48,8 @@ export default function Dashboard() {
 
   return (
     <main className="min-h-screen bg-black text-white">
-      <nav className="border-b border-white/10 px-6 py-4 flex items-center justify-between">
-        <h1 className="text-xl font-bold">DevPath</h1>
+      <nav className="border-b border-white/10 bg-black/60 backdrop-blur px-6 py-4 flex items-center justify-between">
+        <h1 className="text-xl font-semibold tracking-tight">DevPath</h1>
         <div className="flex items-center gap-4">
           <span className="text-white/50 text-sm">{user?.name}</span>
           <button onClick={logout} className="text-sm text-white/50 hover:text-white transition">
@@ -58,14 +58,14 @@ export default function Dashboard() {
         </div>
       </nav>
 
-      <div className="max-w-4xl mx-auto px-6 py-10 space-y-8">
+      <div className="max-w-5xl mx-auto px-6 py-10 md:px-8 md:py-12 space-y-8 md:space-y-10">
         <div className="flex items-center justify-between">
           <div>
-            <h2 className="text-2xl font-bold">Your Roadmaps</h2>
-            <p className="text-white/50 mt-1">Track your learning progress</p>
+            <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">Your Roadmaps</h2>
+            <p className="text-white/60 mt-1">Track your learning progress</p>
           </div>
           <Link href="/generate"
-            className="bg-blue-600 hover:bg-blue-700 px-5 py-2.5 rounded-lg text-sm font-medium transition">
+            className="bg-blue-600 hover:bg-blue-500 active:scale-[0.99] px-5 py-2.5 rounded-xl text-sm font-medium transition">
             + New Roadmap
           </Link>
         </div>
@@ -73,8 +73,8 @@ export default function Dashboard() {
         {loading ? (
           <div className="text-white/50">Loading...</div>
         ) : roadmaps.length === 0 ? (
-          <div className="border border-dashed border-white/20 rounded-xl p-12 text-center space-y-3">
-            <p className="text-white/50">No roadmaps yet</p>
+          <div className="border border-dashed border-white/20 bg-white/[0.02] rounded-2xl p-12 text-center space-y-3">
+            <p className="text-white/60">No roadmaps yet</p>
             <Link href="/generate" className="text-blue-400 hover:underline text-sm">
               Generate your first roadmap →
             </Link>
@@ -85,18 +85,18 @@ export default function Dashboard() {
               const progress = getProgress(r.skills)
               return (
                 <Link key={r._id} href={`/roadmap/${r._id}`}
-                  className="border border-white/10 rounded-xl p-5 hover:border-white/30 transition space-y-3 block">
+                  className="border border-white/10 bg-white/[0.03] rounded-2xl p-5 md:p-6 hover:border-white/20 hover:bg-white/[0.05] hover:-translate-y-0.5 transition-all duration-200 space-y-3 block shadow-[0_8px_30px_rgb(0,0,0,0.25)]">
                   <div className="flex items-center justify-between">
-                    <h3 className="font-semibold">{r.jobTitle}</h3>
-                    <span className="text-sm text-white/50">{progress}%</span>
+                    <h3 className="text-base md:text-lg font-semibold tracking-tight">{r.jobTitle}</h3>
+                    <span className="text-sm text-white/60">{progress}%</span>
                   </div>
-                  <div className="w-full bg-white/10 rounded-full h-1.5">
+                  <div className="w-full bg-white/10 rounded-full h-2">
                     <div
-                      className="bg-blue-500 h-1.5 rounded-full transition-all"
+                      className="bg-blue-500 h-2 rounded-full transition-all"
                       style={{ width: `${progress}%` }}
                     />
                   </div>
-                  <p className="text-white/40 text-sm">
+                  <p className="text-white/50 text-sm">
                     {r.skills.filter(s => s.completed).length}/{r.skills.length} skills completed
                   </p>
                 </Link>

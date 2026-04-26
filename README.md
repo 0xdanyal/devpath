@@ -48,3 +48,20 @@ Open [http://localhost:3000](http://localhost:3000)
 ---
 
 Built by [Danyal](https://linkedin.com/in/danyal-dev) — a self-taught developer from Islamabad, Pakistan.
+
+## Screenshots
+
+### Landing Page
+![Landing Page](public/LandinPage.png)
+
+### Dashboard
+![Dashboard](public/Dashboard.png)
+
+### Login Page
+![Login Page](public/LoginPage.png)
+
+### Register Page
+![Register Page](public/RegisterPage.png)
+
+### Roadmap Page
+![Roadmap Page](public/RoadmapPage.png)
