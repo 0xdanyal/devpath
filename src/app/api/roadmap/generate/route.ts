@@ -130,11 +130,38 @@ Rules:
     const text = completion.choices[0].message.content!
     const skills = JSON.parse(text.trim())
 
+    //==================adding new lines==============================
+    
+    const youtubeApiKey = process.env.YOUTUBE_API_KEY
+
+const skillsWithRealResources = await Promise.all(
+  skills.map(async (skill: any) => {
+    // Search YouTube for real video
+    const ytRes = await fetch(
+      `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(skill.name + ' tutorial')}&type=video&maxResults=1&key=${youtubeApiKey}`
+    )
+    const ytData = await ytRes.json()
+    const video = ytData.items?.[0]
+
+    // Replace youtube resource with real one
+    const resources = skill.resources.filter((r: any) => r.type !== 'youtube')
+    if (video) {
+      resources.unshift({
+        title: video.snippet.title,
+        url: `https://www.youtube.com/watch?v=${video.id.videoId}`,
+        type: 'youtube'
+      })
+    }
+    return { ...skill, resources }
+  })
+)
+
     const roadmap = await Roadmap.create({
       userId: payload.userId,
       jobTitle,
       jobDescription,
-      skills
+      skills: skillsWithRealResources
+      // skills
     })
 
     return NextResponse.json({ roadmap })
