@@ -16,9 +16,9 @@ export default function Register() {
     setError('')
     try {
       const res = await api.post('/auth/register', form)
-      localStorage.setItem('token', res.data.token)
-      localStorage.setItem('user', JSON.stringify(res.data.user))
-      router.push('/dashboard')
+      // localStorage.setItem('token', res.data.token)
+      // localStorage.setItem('user', JSON.stringify(res.data.user))
+      router.push('/login')
     } catch (err: any) {
       setError(err.response?.data?.error || 'Something went wrong')
     } finally {
