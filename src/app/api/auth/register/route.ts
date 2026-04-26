@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import bcrypt from 'bcryptjs'
-import { connectDB } from '../../../../lib/db'
-import User from '../../../../models/User'
-import { signToken } from '../../../../lib/auth'
+import { connectDB } from '@/lib/db'
+import User from '@/models/User'
+import { signToken } from '@/lib/auth'
 
 export async function POST(req: NextRequest) {
   try {
@@ -20,8 +20,8 @@ export async function POST(req: NextRequest) {
     const user = await User.create({ name, email, password: hashed })
     const token = signToken(user._id.toString())
 
-    return NextResponse.json({ token, user: { id: user._id, name: user.name, email: user.email } })
+    return NextResponse.json({ msg: 'Registration successful', token, user: { id: user._id, name: user.name, email: user.email } })
   } catch (err) {
-    return NextResponse.json({ error: 'Server error' }, { status: 500 })
+    return NextResponse.json({ msg: 'Server error', error: 'Server error' }, { status: 500 })
   }
 }
